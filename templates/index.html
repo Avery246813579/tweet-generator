@@ -1,0 +1,27 @@
+<!-- index.html (CS2) -->
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            Stochastic Sentence Display Page (Flask)
+        </title>
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro");
+            body {
+                font-family: "Source Code Pro";
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-well">
+            <div class="col-offset-md-2 col-md-8">
+                <h2>{{ output_first }}</h2>
+                <h2>{{ output_second }}</h2>
+                <h2>{{ output_sentence }}</h2>
+                <h2>{{ output_freq }}</h2>
+            </div>
+        </div>
+    </body>
+</html>

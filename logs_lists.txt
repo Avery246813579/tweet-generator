@@ -8,7 +8,7 @@ WORD FREQUENCY DATA (Type: LIST OF LISTS)
 
 
 
-[["\ufeff\nthe", 1], ["count", 612], ["of", 11147], ["monte", 886], ["cristo\n\nby", 1], ["alexandre", 1], ["dumas", 1], ["[p\u00e8re]\n\ncontents\n\nvolume", 1], ["one\n\nchapter", 2], ["1.", 2], ["marseilles", 30], ["\u2014", 2], ["the", 23479], ["arrival\n\nchapter", 1], ["2.", 2], ["father", 239], ["and", 9778], ["son\n\nchapter", 4], ["3.", 2]]
+[["\ufeff", 1], ["the", 27860], ["count", 681], ["of", 12622], ["monte", 1127], ["cristo", 534], ["by", 2054], ["alexandre", 1], ["dumas", 1], ["[p\u00e8re]", 1], ["contents", 24], ["volume", 16], ["one", 1258], ["chapter", 236], ["1.", 2], ["marseilles", 35], ["\u2014", 2]]
 
 
 

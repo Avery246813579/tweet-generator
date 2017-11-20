@@ -12,17 +12,22 @@ class Stochastic(object):
         freq = dict()
         probabilities, res_arr = [], []
         word_counter = 0
+        word_list = word_list.split(" ")
+        print(word_list)
 
         # LIST COMPREHENSION for creating list of order-preserved user-inputted string values
-        word_uniques = [value for (item, value) in enumerate(word_list) if value not in word_list[0:item]]
+        word_uniques = [[value, 1] for (item, value) in enumerate(word_list) if value not in word_list[0:item]]
+        print(word_uniques)
+        print(poop)
 
         # LOOPS through original word list and sets word frequency to frequency DICTIONARY
         for word in word_list:
-            word_counter += 1
+            # word_counter += 1
             if word in freq:
                 freq[word] += 1
             else:
                 freq[word] = 1
+        print(freq)
 
         sum_vals = sum(freq.values())
 

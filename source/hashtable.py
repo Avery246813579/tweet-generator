@@ -86,11 +86,6 @@ class HashTable(object):
                 return True
             return False
 
-        # for bucket in self.buckets:
-        #     for item_key, item_value in bucket.items():
-        #         if item_key == key:
-        #             return True
-        # return False
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
@@ -121,13 +116,18 @@ class HashTable(object):
         # TODO: If found, update value associated with given key
         # TODO: Otherwise, insert given key-value entry into bucket
 
+        item = self.items()
         bucket_index = self._bucket_index(key)
 
-        for item_key, item_value in self.buckets[bucket_index]:
-            if item_key == key:
-                item_value = value
-            else:
-                self.buckets[bucket_index].push(key, value)
+        if self.contains(key):
+            # for item_key, item_value in self.buckets
+            for bucket in self.buckets:
+                for item_key, item_value in bucket.items():
+                    if item_key == key:
+                        bucket.replace((item_key, item_value), (key, value))
+            pass
+        else:
+            self.buckets[bucket_index].append((key, value))
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
@@ -137,6 +137,17 @@ class HashTable(object):
         # TODO: If found, delete entry associated with given key
         # TODO: Otherwise, raise error to tell user delete failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
+
+        if self.contains(key):
+            # for item_key, item_value in self.buckets
+            for bucket in self.buckets:
+                for item_key, item_value in bucket.items():
+                    if item_key == key:
+                        bucket.delete(key)
+                    else:
+                        raise KeyError("Key mismatch: {} does not match {}".format(item_key, key))
+        else:
+            raise KeyError("Key not found: {}".format(key))
 
 
 def test_hash_table():

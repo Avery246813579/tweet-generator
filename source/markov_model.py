@@ -13,18 +13,29 @@ class Markov(object):
 
     def make_types(self, word_list):
         front_words_dict = self.check_front_word(word_list)
-        pprint(front_words_dict)
+        # pprint(front_words_dict)
 
         types = {}
         for word in front_words_dict:
             # pprint(word)
-            types[word] = Dictogram(front_words_dict[word])
-            pprint(types)
+            types[word] = self.create_dictogram(front_words_dict[word])
+            # pprint(types)
+            # pprint(types[word])
+        pprint(types)
         return types
 
 
-    # def create_dictogram(self, types):
+    def create_dictogram(self, types):
+        dicto = dict()
+        # print("\n\ntypes: {}".format(types))
 
+        for word in types:
+            if word not in dicto:
+                dicto[word] = 1
+            else:
+                dicto[word] += 1
+            
+        return dicto
 
 
     def count_sorter(self, dicto):
@@ -104,8 +115,15 @@ class Markov(object):
             rand_num = random.random()
 
             for j in range(0, len(freq)):
+                print("freq length: {}".format(len(freq)))
+
                 if rand_num < freq[j]:
-                    rand_num = random.randint(0, len(self.types_counts[word][j][1]) - 1)
+                    # print(rand_num)
+                    print(self.types_counts[word][j][1])
+                    # print(len(self.types_counts[word][j][1]))
+                    test_dummy = random.randint(0, len(self.types_counts[word][j][1]) - 1)
+                    # print(test_dummy)
+                    rand_num = test_dummy
                     word_selected = self.types_counts[word][j][1][rand_num]
                     # print(word_selected)
                     return word_selected
@@ -115,28 +133,35 @@ class Markov(object):
 
     def calculate_frequency_distribution(self):
         frequency_distribution = dict()
+        # print(self.types_counts)
 
         for word in self.types_counts:
             frequency_distribution[word] = self.distribute_calculator(self.types[word], self.types_counts[word])
             # print(frequency_distribution[word])
         
+        # print(frequency_distribution)
         return frequency_distribution
 
 
     def distribute_calculator(self, total_tokens, histogram):
         tokens = 0
         # print(total_tokens)
+        # print(histogram)
 
         for k, words in histogram:
-            tokens.append(k * len(words))
+            # print(k)
+            # print(words)
+            tokens = (k * len(words))
+            # print(tokens)
 
-        freqs, sum_freqs = [], 0
+        freqs, sum_freqs = [], 1
 
         for ind in range(tokens):
-            sum_freqs += ind/total_tokens
+            sum_freqs += ind/len(total_tokens)
             freqs.append(sum_freqs)
             # print(freqs)
         
+        # print("break\n\n")
         return freqs
     
 
@@ -152,10 +177,10 @@ def main():
     # f = open("the_count_of_monte_cristo.txt", "r").read()
     # word_list = test_sentence.split()
 
-    test_sentence = "one fish two fish red fish blue fish blue fish"
+    test_sentence = "will you participate in the conference with new fellows on saturday evening after registration will you participate in the workshops on monday morning interested in sharing a room"
     word_list = test_sentence.split() # REMOVE self TEST CODE FOR TEXT FILE
 
-    pprint(word_list)
+    # pprint(word_list)
     markov = Markov(word_list)
     num_of_words = markov.select_word_length(15)
     # print(num_of_words)

@@ -85,7 +85,7 @@ class HashTable(object):
             if key in all_keys:
                 return True
             return False
-        
+
         # for bucket in self.buckets:
         #     for item_key, item_value in bucket.items():
         #         if item_key == key:
@@ -101,13 +101,17 @@ class HashTable(object):
         # TODO: Otherwise, raise error to tell user get failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
 
-        bucket_index = self._bucket_index(key)
+        items = self.items()
 
-        for item_key, item_value in self.buckets[bucket_index]:
-            if item_key == key:
-                return item_value
-            else:
-                raise KeyError("Key not found: {}".format(key))
+        if self.contains(key):
+            for item_key, item_value in items:
+                if item_key == key:
+                    return item_value
+                else:
+                    KeyError("Key mismatch: {} does not match {}".format(item_key, key))
+        else:
+            raise KeyError("Key not found: {}".format(key))
+
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.

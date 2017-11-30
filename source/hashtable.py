@@ -1,6 +1,7 @@
 #!python
 
 from linkedlist import LinkedList
+from time import time
 
 
 class HashTable(object):
@@ -66,10 +67,10 @@ class HashTable(object):
         # TODO: Loop through all buckets
         # TODO: Count number of key-value entries in each bucket
         length_of_items = 0
-        pair_iterator = []
 
         for bucket in self.buckets:
-            length_of_items += len(pair_iterator.extend(bucket.items()))
+            for item in bucket.items():
+                length_of_items += 1
 
         return length_of_items
 
@@ -144,8 +145,8 @@ class HashTable(object):
                 for item_key, item_value in bucket.items():
                     if item_key == key:
                         bucket.delete(key)
-                    else:
-                        raise KeyError("Key mismatch: {} does not match {}".format(item_key, key))
+                    # else:
+                    #     raise KeyError("Key mismatch: {} does not match {}".format(item_key, key))
         else:
             raise KeyError("Key not found: {}".format(key))
 
@@ -167,9 +168,11 @@ def test_hash_table():
 
     print('contains({!r}): {}'.format('X', ht.contains('X')))
     print('length: {}'.format(ht.length()))
+    print("hash table: {}".format(ht))
+
 
     # Enable this after implementing delete method
-    delete_implemented = False
+    delete_implemented = True
     if delete_implemented:
         print('\nTesting delete:')
         for key in ['I', 'V', 'X']:
@@ -181,5 +184,15 @@ def test_hash_table():
         print('length: {}'.format(ht.length()))
 
 
-if __name__ == '__main__':
+def main():
+    t0 = time()
     test_hash_table()
+    t1 = time()
+
+    delta = 1000 * (t1 - t0)
+    print("\nRuntime is {0:.3g} milliseconds.\n".format(delta))
+    return
+
+
+if __name__ == '__main__':
+    main()

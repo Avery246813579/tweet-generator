@@ -1,125 +1,149 @@
-#!python
+"""
+TITLE: hashtable.py
+DESCRIPTION:    This is a functioning class instance of a simple Python hash table
+                with Linked List implementation. 
+SOURCE: Make School Product College: CS2
+AUTHOR: Aakash Sudhakar
+"""
 
-from linkedlist import LinkedList
-from time import time
+# ================================================================================
+# ============================== IMPORT STATEMENTS ===============================
+# ================================================================================
+
+
+from linkedlist import LinkedList                       # Linked List dependency
+from time import time                                   # Time logger library
+
+
+# ================================================================================
+# =============================== CLASS DEFINITION ===============================
+# ================================================================================
 
 
 class HashTable(object):
 
+    # =========================== CLASS INITIALIZER(S) ===========================
     def __init__(self, init_size=8):
-        """Initialize this hash table with the given initial size."""
-        # Create a new list (used as fixed-size array) of empty linked lists
+
+        # Creates new list (static array) of empty linked lists
         self.buckets = [LinkedList() for _ in range(init_size)]
 
+
+    # ====== METHOD TO RETURN FORMATTED STRING REPRESENTATION OF HASH TABLE ======
     def __str__(self):
-        """Return a formatted string representation of this hash table."""
         items = ['{!r}: {!r}'.format(key, val) for key, val in self.items()]
-        return '{' + ', '.join(items) + '}'
+        
+        return "{" + ", ".join(items) + "}"
 
+
+    # =========== METHOD TO RETURN STRING REPRESENTATION OF HASH TABLE ===========
     def __repr__(self):
-        """Return a string representation of this hash table."""
-        return 'HashTable({!r})'.format(self.items())
+        return "HashTable({!r})".format(self.items())
 
+
+    # ================= METHOD TO RETURN INDEX OF TARGET BUCKET ==================
+    # TODO: O(?) for time; O(?) for memory
     def _bucket_index(self, key):
-        """Return the bucket index where the given key would be stored."""
-        # Calculate the given key's hash code and transform into bucket index
+
+        # Calculates given key's hash code and transforms into bucket index
         return hash(key) % len(self.buckets)
 
+
+    # ======================== METHOD TO RETURN ALL KEYS =========================
+    # TODO: O(?) for time; O(?) for memory
     def keys(self):
-        """Return a list of all keys in this hash table.
-        TODO: Running time: O(???) Why and under what conditions?"""
-        # Collect all keys in each bucket
         all_keys = []
 
+        # Collects all keys per bucket
         for bucket in self.buckets:
-            for key, value in bucket.items():
-                all_keys.append(key)
+            for item_key, item_value in bucket.items():
+                all_keys.append(item_key)
 
         return all_keys
 
+
+    # ======================= METHOD TO RETURN ALL VALUES ========================
+    # TODO: O(?) for time; O(?) for memory
     def values(self):
-        """Return a list of all values in this hash table.
-        TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Loop through all buckets **DONE**
-        # TODO: Collect all values in each bucket **DONE**
         all_values = []
 
+        # Collects all values per key per bucket
         for bucket in self.buckets:
-            for key, value in bucket.items():
-                all_values.append(value)
+            for item_key, item_value in bucket.items():
+                all_values.append(item_value)
 
         return all_values
 
+
+    # =============== METHOD TO RETURN ALL ITEMS (KEY-VALUE PAIRS) ===============
+    # TODO: O(?) for time; O(?) for memory
     def items(self):
-        """Return a list of all items (key-value pairs) in this hash table.
-        TODO: Running time: O(???) Why and under what conditions?"""
-        # Collect all pairs of key-value entries in each bucket
         all_items = []
 
+        # Collects all key-value pairs per bucket
         for bucket in self.buckets:
             all_items.extend(bucket.items())
 
         return all_items
 
+
+    # ======================= METHOD TO RETURN ITEM LENGTH =======================
+    # TODO: O(?) for time; O(?) for memory
     def length(self):
-        """Return the number of key-value entries by traversing its buckets.
-        TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Loop through all buckets
-        # TODO: Count number of key-value entries in each bucket
+
+        # NOTE: Default solution using manual bucket iteration
+        """
         length_of_items = 0
 
+        # Iterates length counter per item per bucket
         for bucket in self.buckets:
             for item in bucket.items():
                 length_of_items += 1
 
         return length_of_items
+        """
 
+        # NOTE: Alternative solution uses defined method
+        length_of_items = len(self.items())
+
+        return length_of_items
+
+
+    # =================== METHOD TO INDICATE EXISTENCE OF ITEM ===================
+    # TODO: O(?) for time; O(?) for memory
     def contains(self, key):
-        """Return True if this hash table contains the given key, or False.
-        TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Find bucket where given key belongs
-        # TODO: Check if key-value entry exists in bucket
-
         all_keys = self.keys()
 
+        # Checks existence of given key per bucket
         for _ in all_keys:
             if key in all_keys:
                 return True
             return False
 
 
+    # ===================== METHOD TO RETURN VALUE FROM KEY ======================
+    # TODO: O(?) for time; O(?) for memory
     def get(self, key):
-        """Return the value associated with the given key, or raise KeyError.
-        TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Find bucket where given key belongs
-        # TODO: Check if key-value entry exists in bucket
-        # TODO: If found, return value associated with given key
-        # TODO: Otherwise, raise error to tell user get failed
-        # Hint: raise KeyError('Key not found: {}'.format(key))
-
         items = self.items()
 
+        # Checks key existence per bucket (or returns KeyError), then returns associated value
         if self.contains(key):
             for item_key, item_value in items:
                 if item_key == key:
                     return item_value
-                else:
-                    KeyError("Key mismatch: {} does not match {}".format(item_key, key))
+                # else:
+                #     KeyError("Key mismatch: {} does not match {}".format(item_key, key))
         else:
             raise KeyError("Key not found: {}".format(key))
 
 
+    # ====================== METHOD TO INSERT/UPDATE ITEM ========================
+    # TODO: O(?) for time; O(?) for memory
     def set(self, key, value):
-        """Insert or update the given key with its associated value.
-        TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Find bucket where given key belongs
-        # TODO: Check if key-value entry exists in bucket
-        # TODO: If found, update value associated with given key
-        # TODO: Otherwise, insert given key-value entry into bucket
-
         item = self.items()
         bucket_index = self._bucket_index(key)
 
+        # Checks item existence per key per bucket (or inserts item), then replaces item
         if self.contains(key):
             # for item_key, item_value in self.buckets
             for bucket in self.buckets:
@@ -130,69 +154,71 @@ class HashTable(object):
         else:
             self.buckets[bucket_index].append((key, value))
 
-    def delete(self, key):
-        """Delete the given key from this hash table, or raise KeyError.
-        TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Find bucket where given key belongs
-        # TODO: Check if key-value entry exists in bucket
-        # TODO: If found, delete entry associated with given key
-        # TODO: Otherwise, raise error to tell user delete failed
-        # Hint: raise KeyError('Key not found: {}'.format(key))
 
+    # ========================== METHOD TO DELETE ITEM ===========================
+    # TODO: O(?) for time; O(?) for memory
+    def delete(self, key):
+
+        # Checks item existence per key per bucket (or raises KeyError), then deletes item
         if self.contains(key):
             # for item_key, item_value in self.buckets
             for bucket in self.buckets:
                 for item_key, item_value in bucket.items():
                     if item_key == key:
-                        bucket.delete(key)
+                        bucket.delete((key, item_value))
                     # else:
                     #     raise KeyError("Key mismatch: {} does not match {}".format(item_key, key))
         else:
             raise KeyError("Key not found: {}".format(key))
 
 
+# ================================================================================
+# ============================== MAIN RUN FUNCTIONS ==============================
+# ================================================================================
+
+
 def test_hash_table():
     ht = HashTable()
     print('hash table: {}'.format(ht))
 
-    print('\nTesting set:')
+    print('\n******************************\nTesting set:')
     for key, value in [('I', 1), ('V', 5), ('X', 10)]:
         print('set({!r}, {!r})'.format(key, value))
         ht.set(key, value)
         print('hash table: {}'.format(ht))
 
-    print('\nTesting get:')
+    print('\n******************************\nTesting get:')
     for key in ['I', 'V', 'X']:
         value = ht.get(key)
-        print('get({!r}): {!r}'.format(key, value))
+        print('get({!r}): the associated value is {!r}'.format(key, value))
 
     print('contains({!r}): {}'.format('X', ht.contains('X')))
     print('length: {}'.format(ht.length()))
     print("hash table: {}".format(ht))
 
-
-    # Enable this after implementing delete method
-    delete_implemented = True
-    if delete_implemented:
-        print('\nTesting delete:')
-        for key in ['I', 'V', 'X']:
-            print('delete({!r})'.format(key))
-            ht.delete(key)
-            print('hash table: {}'.format(ht))
+    print('\n******************************\nTesting delete:\n')
+    for key in ['I', 'V', 'X']:
+        print('delete({!r})'.format(key))
+        ht.delete(key)
+        print('hash table: {}'.format(ht))
 
         print('contains(X): {}'.format(ht.contains('X')))
-        print('length: {}'.format(ht.length()))
+        print('length: {}\n'.format(ht.length()))
 
+
+def test_ht_iterable():
+    pass
 
 def main():
     t0 = time()
     test_hash_table()
+    # test_ht_iterable()
     t1 = time()
 
     delta = 1000 * (t1 - t0)
-    print("\nRuntime is {0:.3g} milliseconds.\n".format(delta))
+    print("\n******************************\nRuntime is {0:.3g} milliseconds.\n".format(delta))
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

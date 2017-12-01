@@ -12,7 +12,7 @@ AUTHOR: Aakash Sudhakar
 # ================================================================================
 
 
-from linkedlist import LinkedList                       # Linked List dependency
+from linkedlist import LinkedList                       # Linked List module
 from time import time                                   # Time logger library
 
 

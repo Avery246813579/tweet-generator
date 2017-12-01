@@ -177,17 +177,18 @@ class HashTable(object):
 # ================================================================================
 
 
+# ===================== FUNCTION TO RUN BASIC METHOD TESTS =======================
 def test_hash_table():
     ht = HashTable()
-    print('hash table: {}'.format(ht))
+    print("\n\nhash table: {}".format(ht))
 
-    print('\n******************************\nTesting set:')
+    print('\n******************************\n\nTesting set:\n')
     for key, value in [('I', 1), ('V', 5), ('X', 10)]:
         print('set({!r}, {!r})'.format(key, value))
         ht.set(key, value)
         print('hash table: {}'.format(ht))
 
-    print('\n******************************\nTesting get:')
+    print('\n******************************\n\nTesting get:\n')
     for key in ['I', 'V', 'X']:
         value = ht.get(key)
         print('get({!r}): the associated value is {!r}'.format(key, value))
@@ -196,7 +197,7 @@ def test_hash_table():
     print('length: {}'.format(ht.length()))
     print("hash table: {}".format(ht))
 
-    print('\n******************************\nTesting delete:\n')
+    print('\n******************************\n\nTesting delete:\n')
     for key in ['I', 'V', 'X']:
         print('delete({!r})'.format(key))
         ht.delete(key)
@@ -206,13 +207,17 @@ def test_hash_table():
         print('length: {}\n'.format(ht.length()))
 
 
+# ======================== FUNCTION TO RUN AS ITERABLE ===========================
+# TODO: Add methods to use class as iterable
 def test_ht_iterable():
     pass
 
+
+# ================================== MAIN RUN =====================================
 def main():
     t0 = time()
     test_hash_table()
-    # test_ht_iterable()
+    # test_ht_iterable()        # TODO: Add methods to use class as iterable     
     t1 = time()
 
     delta = 1000 * (t1 - t0)

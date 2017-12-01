@@ -131,8 +131,6 @@ class HashTable(object):
             for item_key, item_value in items:
                 if item_key == key:
                     return item_value
-                # else:
-                #     KeyError("Key mismatch: {} does not match {}".format(item_key, key))
         else:
             raise KeyError("Key not found: {}".format(key))
 

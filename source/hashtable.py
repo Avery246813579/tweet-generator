@@ -43,7 +43,6 @@ class HashTable(object):
 
 
     # ================= METHOD TO RETURN INDEX OF TARGET BUCKET ==================
-    # TODO: O(?) for time; O(?) for memory
     def _bucket_index(self, key):
 
         # Calculates given key's hash code and transforms into bucket index
@@ -51,7 +50,12 @@ class HashTable(object):
 
 
     # ======================== METHOD TO RETURN ALL KEYS =========================
-    # TODO: O(?) for time; O(?) for memory
+    """
+    NOTE: (TIME) Best Case -> O(?) -> ???
+    NOTE: (TIME) Worst Case -> O(?) -> ???
+    NOTE: (MEMORY) Best Case -> O(?) -> ???
+    NOTE: (MEMORY) Worst Case -> O(?) -> ???
+    """
     def keys(self):
         all_keys = []
 

@@ -6,6 +6,7 @@ SOURCE: CS2-Tweet-Generator course repository at Make School Product College
 AUTHOR: Aakash Sudhakar
 """
 
+
 # ================================================================================
 # ============================== IMPORT STATEMENTS ===============================
 # ================================================================================
@@ -138,8 +139,9 @@ class HashTable(object):
     # ====================== METHOD TO INSERT/UPDATE ITEM ========================
     # TODO: O(?) for time; O(?) for memory
     def set(self, key, value):
-        item = self.items()
+        # item = self.items()
         bucket_index = self._bucket_index(key)
+        bucket = self.buckets[bucket_index]
 
         # Checks item existence per key per bucket (or inserts item), then replaces item
         if self.contains(key):

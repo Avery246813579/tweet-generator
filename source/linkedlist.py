@@ -1,17 +1,39 @@
-#!python
+"""
+TITLE: linkedlist.py
+DESCRIPTION:    This is a functioning model of a simple Python linked list with
+                two class instances for the Node and Linked List objects.
+SOURCE: CS2-Tweet-Generator course repository at Make School Product College
+AUTHOR: Aakash Sudhakar
+"""
 
+
+# ================================================================================
+# ============================== IMPORT STATEMENTS ===============================
+# ================================================================================
+
+
+from time import time                                   # Time logger library
+
+
+# ================================================================================
+# ============================ CLASS DEFINITION: NODE ============================
+# ================================================================================
 
 
 class Node(object):
 
     def __init__(self, data, p=None, n=None):
         self.data = data
-        # self.prev = p
+        # self.prev = prev
         self.next = n
 
     def __repr__(self):
         return "Node({!r})".format(self.data)  # Returns string representation of current node
 
+
+# ================================================================================
+# ======================== CLASS DEFINITION: LINKED LIST =========================
+# ================================================================================
 
 
 class LinkedList(object):

@@ -2,7 +2,7 @@
 TITLE: hashtable.py
 DESCRIPTION:    This is a functioning class instance of a simple Python hash table
                 with Linked List implementation. 
-SOURCE: Make School Product College: CS2
+SOURCE: CS2-Tweet-Generator course repository at Make School Product College
 AUTHOR: Aakash Sudhakar
 """
 
@@ -217,9 +217,9 @@ def test_ht_iterable():
 def main():
     t0 = time()
     test_hash_table()
-    # test_ht_iterable()        # TODO: Add methods to use class as iterable     
-    t1 = time()
-
+    # test_ht_iterable()        # TODO: Add methods to use class as iterable 
+    t1 = time() 
+    
     delta = 1000 * (t1 - t0)
     print("\n******************************\nRuntime is {0:.3g} milliseconds.\n".format(delta))
     return

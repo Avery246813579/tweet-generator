@@ -1,3 +1,8 @@
+"""
+NAME: markov_N.py
+"""
+
+
 from dictogram import Dictogram
 from pprint import pprint
 from time import time as t

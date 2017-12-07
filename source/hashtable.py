@@ -17,7 +17,7 @@ from time import time                                   # Time logger library
 
 
 # ================================================================================
-# =============================== CLASS DEFINITION ===============================
+# ========================= CLASS DEFINITION: HASH TABLE =========================
 # ================================================================================
 
 
@@ -51,8 +51,7 @@ class HashTable(object):
 
     # ======================== METHOD TO RETURN ALL KEYS =========================
     """
-    NOTE: (TIME) Best Case -> O(?) -> ???
-    NOTE: (TIME) Worst Case -> O(?) -> ???
+    NOTE: (TIME) Best/Worst Case -> O(n) -> Iterate through all items in each bucket
     NOTE: (MEMORY) Best Case -> O(?) -> ???
     NOTE: (MEMORY) Worst Case -> O(?) -> ???
     """
@@ -69,6 +68,12 @@ class HashTable(object):
 
     # ======================= METHOD TO RETURN ALL VALUES ========================
     # TODO: O(?) for time; O(?) for memory
+    """
+    NOTE: (TIME) Best/Worst Case -> O(n) -> Iterate through all items in each bucket
+    NOTE: (MEMORY) Best Case -> O(?) -> ???
+    NOTE: (MEMORY) Worst Case -> O(?) -> ???
+    """
+    
     def values(self):
         all_values = []
 
@@ -81,7 +86,11 @@ class HashTable(object):
 
 
     # =============== METHOD TO RETURN ALL ITEMS (KEY-VALUE PAIRS) ===============
-    # TODO: O(?) for time; O(?) for memory
+    """
+    NOTE: (TIME) Best/Worst Case -> O(n) -> Iterate through each bucket
+    NOTE: (MEMORY) Best Case -> O(?) -> ???
+    NOTE: (MEMORY) Worst Case -> O(?) -> ???
+    """
     def items(self):
         all_items = []
 
@@ -93,7 +102,12 @@ class HashTable(object):
 
 
     # ======================= METHOD TO RETURN ITEM LENGTH =======================
-    # TODO: O(?) for time; O(?) for memory
+    """
+    NOTE: (TIME) Best Case -> O(1) -> Use length() property of defined array
+    NOTE: (TIME) Worst Case -> O(n^2) -> Iterate through each item in each bucket
+    NOTE: (MEMORY) Best Case -> O(?) -> ???
+    NOTE: (MEMORY) Worst Case -> O(?) -> ???
+    """
     def length(self):
 
         # NOTE: Default solution using manual bucket iteration
@@ -115,7 +129,12 @@ class HashTable(object):
 
 
     # =================== METHOD TO INDICATE EXISTENCE OF ITEM ===================
-    # TODO: O(?) for time; O(?) for memory
+    """
+    NOTE: (TIME) Best Case -> O(1) -> First item matches key
+    NOTE: (TIME) Worst Case -> O(n) -> Iterates through each item until last item matches key
+    NOTE: (MEMORY) Best Case -> O(?) -> ???
+    NOTE: (MEMORY) Worst Case -> O(?) -> ???
+    """
     def contains(self, key):
         all_keys = self.keys()
 
@@ -127,9 +146,16 @@ class HashTable(object):
 
 
     # ===================== METHOD TO RETURN VALUE FROM KEY ======================
-    # TODO: O(?) for time; O(?) for memory
+    """
+    NOTE: (TIME) Best Case -> O(1) -> First item matches key-value pair
+    NOTE: (TIME) Worst Case -> O(n) -> Iterate through each item until last item matches key, then returns associated value
+    NOTE: (MEMORY) Best Case -> O(?) -> ???
+    NOTE: (MEMORY) Worst Case -> O(?) -> ???
+    """
     def get(self, key):
         items = self.items()
+
+        # Use .find() method in Linked List 
 
         # Checks key existence per bucket (or returns KeyError), then returns associated value
         if self.contains(key):
@@ -141,7 +167,12 @@ class HashTable(object):
 
 
     # ====================== METHOD TO INSERT/UPDATE ITEM ========================
-    # TODO: O(?) for time; O(?) for memory
+    """
+    NOTE: (TIME) Best Case -> O(1) -> First item
+    NOTE: (TIME) Worst Case -> O(n^2) -> Iterate through each bucket, then each item in every bucket until last item matches
+    NOTE: (MEMORY) Best Case -> O(?) -> ???
+    NOTE: (MEMORY) Worst Case -> O(?) -> ???
+    """
     def set(self, key, value):
         # item = self.items()
         bucket_index = self._bucket_index(key)
@@ -160,7 +191,12 @@ class HashTable(object):
 
 
     # ========================== METHOD TO DELETE ITEM ===========================
-    # TODO: O(?) for time; O(?) for memory
+    """
+    NOTE: (TIME) Best Case -> O(1) -> First item
+    NOTE: (TIME) Worst Case -> O(n^2) -> Iterate through each item of each bucket until last item matches
+    NOTE: (MEMORY) Best Case -> O(?) -> ???
+    NOTE: (MEMORY) Worst Case -> O(?) -> ???
+    """
     def delete(self, key):
 
         # Checks item existence per key per bucket (or raises KeyError), then deletes item

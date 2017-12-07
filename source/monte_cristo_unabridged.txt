@@ -1,130 +1,4 @@
 ﻿the count of monte cristo
-by alexandre dumas
-contents
-volume one
-chapter 1 marseilles — the arrival
-chapter 2 father and son
-chapter 3 the catalans
-chapter 4 conspiracy
-chapter 5 the marriage feast
-chapter 6 the deputy procureur du roi
-chapter 7 the examination
-chapter 8 the château d’if
-chapter 9 the evening of the betrothal
-chapter 10 the king’s closet at the tuileries
-chapter 11 the corsican ogre
-chapter 12 father and son
-chapter 13 the hundred days
-chapter 14 the two prisoners
-chapter 15 number 34 and number 27
-chapter 16 a learned italian
-chapter 17 the abbé’s chamber
-chapter 18 the treasure
-chapter 19 the third attack
-chapter 20 the cemetery of the château d’if
-chapter 21 the island of tiboulen
-chapter 22 the smugglers
-chapter 23 the island of monte cristo
-chapter 24 the secret cave
-chapter 25 the unknown
-chapter 26 the pont du gard inn
-chapter 27 the story
-volume two
-chapter 28 the prison register
-chapter 29 the house of morrel and son
-chapter 30 the fifth of september
-chapter 31 italy sinbad the sailor
-chapter 32 the waking
-chapter 33 roman bandits
-chapter 34 the colosseum
-chapter 35 la mazzolata
-chapter 36 the carnival at rome
-chapter 37 the catacombs of saint sebastian
-chapter 38 the rendezvous
-chapter 39 the guests
-chapter 40 the breakfast
-chapter 41 the presentation
-chapter 42 monsieur bertuccio
-chapter 43 the house at auteuil
-chapter 44 the vendetta
-chapter 45 the rain of blood
-chapter 46 unlimited credit
-chapter 47 the dappled grays
-volume three
-chapter 48 ideology
-chapter 49 haydée
-chapter 50 the morrel family
-chapter 51 pyramus and thisbe
-chapter 52 toxicology
-chapter 53 robert le diable
-chapter 54 a flurry in stocks
-chapter 55 major cavalcanti
-chapter 56 andrea cavalcanti
-chapter 57 in the lucern patch
-chapter 58 m noirtier de villefort
-chapter 59 the will
-chapter 60 the telegraph
-chapter 61 how a gardener may get rid of the dormice
-chapter 62 ghosts
-chapter 63 the dinner
-chapter 64 the beggar
-chapter 65 a conjugal scene
-chapter 66 matrimonial projects
-chapter 67 the office of the king’s attorney
-chapter 68 a summer ball
-chapter 69 the inquiry
-chapter 70 the ball
-chapter 71 bread and salt
-chapter 72 madame de saint-méran
-chapter 73 the promise
-volume four
-chapter 74 the villefort family vault
-chapter 75 a signed statement
-chapter 76 progress of cavalcanti the younger
-chapter 77 haydée
-chapter 78 we hear from yanina
-chapter 79 the lemonade
-chapter 80 the accusation
-chapter 81 the room of the retired baker
-chapter 82 the burglary
-chapter 83 the hand of god
-chapter 84 beauchamp
-chapter 85 the journey
-chapter 86 the trial
-chapter 87 the challenge
-chapter 88 the insult
-chapter 89 the night
-chapter 90 the meeting
-chapter 91 mother and son
-chapter 92 the suicide
-chapter 93 valentine
-chapter 94 maximilian’s avowal
-chapter 95 father and daughter
-volume five
-chapter 96 the contract
-chapter 97 the departure for belgium
-chapter 98 the bell and bottle tavern
-chapter 99 the law
-chapter 100 the apparition
-chapter 101 locusta
-chapter 102 valentine
-chapter 103 maximilian
-chapter 104 danglars’ signature
-chapter 105 the cemetery of père-lachaise
-chapter 106 dividing the proceeds
-chapter 107 the lions’ den
-chapter 108 the judge
-chapter 109 the assizes
-chapter 110 the indictment
-chapter 111 expiation
-chapter 112 the departure
-chapter 113 the past
-chapter 114 peppino
-chapter 115 luigi vampa’s bill of fare
-chapter 116 the pardon
-chapter 117 the fifth of october
-volume one
-chapter 1 marseilles — the arrival
 on the 24th of february 1815 the look-out at notre-dame de la garde
 signalled the three-master the pharaon from smyrna trieste and
 naples
@@ -434,7 +308,7 @@ owner saw danglars behind him apparently awaiting orders but in
 reality also watching the young sailor—but there was a great difference
 in the expression of the two men who thus followed the movements of
 edmond dantès
-chapter 2 father and son
+  father and son
 we will leave danglars struggling with the demon of hatred and
 endeavoring to insinuate in the ear of the shipowner some evil
 suspicions against his comrade and follow dantès who after having
@@ -679,7 +553,7 @@ père pamphile had seen dantès pass not ten minutes before; and assured
 that he was at the catalans they sat down under the budding foliage of
 the planes and sycamores in the branches of which the birds were
 singing their welcome to one of the first days of spring
-chapter 3 the catalans
+  the catalans
 beyond a bare weather-worn wall about a hundred paces from the spot
 where the two friends sat looking and listening as they drank their
 wine was the village of the catalans long ago this mysterious colony
@@ -1032,7 +906,7 @@ journey” he cried
 “thank you” said edmond with a friendly nod and the two lovers
 continued on their way as calm and joyous as if they were the very
 elect of heaven
-chapter 4 conspiracy
+  conspiracy
 danglars followed edmond and mercédès with his eyes until the two lovers
 disappeared behind one of the angles of fort saint nicolas; then
 turning round he perceived fernand who had fallen pale and trembling
@@ -1252,7 +1126,7 @@ road to the vieilles infirmeries”
 right—how treacherous wine is”
 “come come” said danglars to himself “now the thing is at work and it
 will effect its purpose unassisted”
-chapter 5 the marriage feast
+  the marriage feast
 the morning’s sun rose clear and resplendent touching the foamy waves
 into a network of ruby-tinted light
 the feast had been made ready on the second floor at la réserve with
@@ -1774,7 +1648,7 @@ hold his tongue my only fear is the chance of dantès being released
 but there he is in the hands of justice; and” added he with a smile
 “she will take her own” so saying he leaped into a boat desiring to
 be rowed on board the pharaon where m morrel had agreed to meet him
-chapter 6 the deputy procureur du roi
+  the deputy procureur du roi
 in one of the aristocratic mansions built by puget in the rue du grand
 cours opposite the medusa fountain a second marriage feast was being
 celebrated almost at the same hour with the nuptial repast given by
@@ -2167,7 +2041,7 @@ then casting an expressive glance at his betrothed which seemed to say
 “fear not for your dear sake my justice shall be tempered with mercy”
 and receiving a sweet and approving smile in return villefort departed
 with paradise in his heart
-chapter 7 the examination
+  the examination
 no sooner had villefort left the salon than he assumed the grave air of
 a man who holds the balance of life and death in his hands now in
 spite of the nobility of his countenance the command of which like a
@@ -2499,7 +2373,7 @@ me i will make my fortune now to the work i have in hand” and after
 having assured himself that the prisoner was gone the deputy procureur
 hastened to the house of his betrothed
 0107m
-chapter 8 the château d’if
+  the château d’if
 the commissary of police as he traversed the antechamber made a sign
 to two gendarmes who placed themselves one on dantès’ right and the
 other on his left a door that communicated with the palais de justice
@@ -2809,7 +2683,7 @@ was thrust in the door closed and dantès advanced with outstretched
 hands until he touched the wall; he then sat down in the corner until
 his eyes became accustomed to the darkness the jailer was right; dantès
 wanted but little of being utterly mad
-chapter 9 the evening of the betrothal
+  the evening of the betrothal
 villefort had as we have said hastened back to madame de saint-méran’s
 in the place du grand cours and on entering the house found that the
 guests whom he had left at table were taking coffee in the salon renée

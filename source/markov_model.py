@@ -3,7 +3,8 @@ from pprint import pprint
 import random, sys
     
 
-class Markov(object):
+
+class MarkovFirstOrder(object):
 
 
     def __init__(self, word_list):
@@ -178,10 +179,11 @@ def main():
     # word_list = test_sentence.split()
 
     test_sentence = "will you participate in the conference with new fellows on saturday evening after registration will you participate in the workshops on monday morning interested in sharing a room"
-    word_list = test_sentence.split() # REMOVE self TEST CODE FOR TEXT FILE
+    word_list = test_sentence.split()
 
     # pprint(word_list)
-    markov = Markov(word_list)
+    # markov = MarkovFirstOrder(word_list)
+    markov = MarkovSecondOrder(word_list)
     num_of_words = markov.select_word_length(15)
     # print(num_of_words)
 

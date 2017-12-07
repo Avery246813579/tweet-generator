@@ -54,7 +54,7 @@ class MarkovNthOrder(object):
 def create_model():
     test_sentence = "will you participate in the conference with new fellows on saturday evening after registration will you participate in the workshops on monday morning interested in sharing a room"
     
-    markov = MarkovNthOrder(3)
+    markov = MarkovNthOrder(3.2)
     markov.build_states_from_sentence(test_sentence)
 
     return

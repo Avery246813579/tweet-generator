@@ -11,6 +11,7 @@ AUTHOR: Aakash Sudhakar
 # ============================== IMPORT STATEMENTS ===============================
 # ================================================================================
 
+
 from pprint import pprint                               # Pretty print library
 from time import time as t                              # Time logger library
 import random, sys                                      # Random, system libraries
@@ -19,6 +20,7 @@ import random, sys                                      # Random, system librari
 # ================================================================================
 # =================== CLASS DEFINITION: Nth ORDER MARKOV CHAIN ===================
 # ================================================================================
+
 
 class MarkovNthOrder(object):
 
@@ -32,7 +34,7 @@ class MarkovNthOrder(object):
             raise Exception("\nImproper parameter given: please give integer.")
     
     # ================= HELPER METHOD TO CREATE N-SIZED WINDOW ===================
-    def create_window(self):
+    def initialize_window(self):
         n = self.order
         window = []
 
@@ -48,7 +50,7 @@ class MarkovNthOrder(object):
 
     # ================= METHOD TO CREATE DICTOGRAM FROM SENTENCE =================
     def build_states_from_sentence(self, input_sentence):
-        prev = self.create_chain()
+        prev = self.initialize_window()
         tokens = input_sentence.split(" ")
 
         for token in tokens:
@@ -61,13 +63,18 @@ class MarkovNthOrder(object):
         print("\INPUT SENTENCE: {}\n".format(input_sentence))
         print("ORDER: {}\n".format(self.order))
         print("TOTAL TOKENS:")
-        pprint(tokens)
+        pprint(tokens[:15])
         print("\nTOTAL STATES:")
         pprint(self.states)
+
+    # ================= METHOD TO CREATE DICTOGRAM FROM SENTENCE =================
+    # ================= METHOD TO CREATE DICTOGRAM FROM SENTENCE =================
+    
 
 # ================================================================================
 # ============================== MAIN RUN FUNCTIONS ==============================
 # ================================================================================
+
 
 # ================== FUNCTION TO CREATE AND RUN CLASS INSTANCE ===================
 def create_model():

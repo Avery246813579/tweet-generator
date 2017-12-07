@@ -39,7 +39,7 @@ class MarkovNthOrder(object):
             self.states[prev].append(curr)
             prev = curr
 
-        print("input_sentence: {}\n\norder: {}\n\ntokens: {}\n\nstates: {}\n\n".format(input_sentence, self.order, tokens, self.states))
+        pprint("input_sentence: {}\n\norder: {}\n\ntokens: {}\n\nstates: {}\n\n".format(input_sentence, self.order, tokens, self.states))
 
 
 # ================================================================================

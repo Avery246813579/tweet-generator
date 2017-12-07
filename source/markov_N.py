@@ -44,8 +44,12 @@ class MarkovNthOrder(object):
             self.states[prev].append(curr)
             prev = curr
 
-        pprint("input_sentence: {}\n\norder: {}\n\ntokens: {}\n\nstates: {}\n\n".format(input_sentence, self.order, tokens, self.states))
-
+        print("Input Sentence: {}\n\n".format(input_sentence))
+        print("Order: {}\n\n".format(self.order))
+        pprint("Total Tokens: {}".format(tokens))
+        print("\n\n")
+        pprint("Total States: {}".format(self.states))
+        print("\n\n")
 
 # ================================================================================
 # ============================== MAIN RUN FUNCTIONS ==============================
@@ -54,7 +58,7 @@ class MarkovNthOrder(object):
 def create_model():
     test_sentence = "will you participate in the conference with new fellows on saturday evening after registration will you participate in the workshops on monday morning interested in sharing a room"
     
-    markov = MarkovNthOrder(3.2)
+    markov = MarkovNthOrder(2)
     markov.build_states_from_sentence(test_sentence)
 
     return

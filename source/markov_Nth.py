@@ -37,24 +37,41 @@ class MarkovNthOrder(object):
             raise Exception("\nImproper parameter given: please give integer.")
     
     # ================= HELPER METHOD TO CREATE N-SIZED WINDOW ===================
+    """
+    NOTE: (TIME) Best/Worst Case -> O(n) -> Append N new entries to window
+    NOTE: (MEMORY) Best Case -> O(?) -> ???
+    NOTE: (MEMORY) Worst Case -> O(?) -> ???
+    """
     def initialize_window(self):
         n = self.order
         window = []
 
+        # Create window tuple of size n (inputted order)
         for _ in range(n):
             window.append("")
 
         return tuple(window)
 
     # ==================== HELPER METHOD TO BUILD EACH WINDOW ====================
+    """
+    NOTE: (TIME) Best/Worst Case -> O(1) -> Sum together inputs
+    NOTE: (MEMORY) Best Case -> O(?) -> ???
+    NOTE: (MEMORY) Worst Case -> O(?) -> ???
+    """
     def add_to_window(self, old, step):
         new = old[1:] + (step, )
         return new
 
     # ================= METHOD TO CREATE DICTOGRAM FROM SENTENCE =================
+    """
+    NOTE: (TIME) Best/Worst Case -> O(n) -> Create dictogram by iterating through all tokens once
+    NOTE: (MEMORY) Best Case -> O(?) -> ???
+    NOTE: (MEMORY) Worst Case -> O(?) -> ???
+    """
     def build_states_from_sentence(self, tokens):
         prev = self.initialize_window()
 
+        # Create markov model of current and next chained-word states
         for token in tokens:
             if not prev in self.states:
                 self.states[prev] = []
@@ -65,16 +82,23 @@ class MarkovNthOrder(object):
             prev = curr
 
         input_sentence = " ".join(tokens)
-
         print("\nINPUT SENTENCE: {}...\n".format(input_sentence[:250]))
         print("WORD COUNT OF CORPUS: >400,000\n")
+
         # print("ORDER: {}\n".format(self.order))
         # print("TOTAL TOKENS:")
         # pprint(tokens)
         # print("\nTOTAL STATES:")
         # pprint(self.states)
+        return
 
     # ============ METHOD TO SAMPLE DICTOGRAM AND CREATE NEW SENTENCE ============
+    """
+    NOTE: (TIME) Best/Worst Case -> O(1) -> Random samples select few words towards start of markov chain
+    NOTE: (TIME) Worst Case -> O(n^2) -> Random samples select many words scattered throughout markov chain
+    NOTE: (MEMORY) Best Case -> O(?) -> ???
+    NOTE: (MEMORY) Worst Case -> O(?) -> ???
+    """
     def construct_sample_sentence(self):
         temp = self.initialize_window()
         current_position = self.states[temp][ri(0, len(self.states[temp]) - 1)]
@@ -85,6 +109,7 @@ class MarkovNthOrder(object):
         # print("breaker: {}".format(breaker))
         # print("histogram: {}".format(self.histogram))
 
+        # Use randomizing library to chain together sentence based on sampling frequencies
         while (current_position in self.states) and (current_position != temp) and (current_position != None):
             if not first:
                 start += breaker
@@ -103,11 +128,12 @@ class MarkovNthOrder(object):
 
 # ================== FUNCTION TO CREATE AND RUN CLASS INSTANCE ===================
 def create_model():
-    # corpus = "will you participate in the conference with new fellows on saturday evening after registration will you participate in the workshops on monday morning interested in sharing a room"
+    # Create corpus from TCoMC book (over 400,000 words)
     with open("tcomc_unabridged.txt") as f:
         corpus = f.read().split()
     markov = MarkovNthOrder(3)
 
+    # Create random walk, then reformat and clean to produce final outputted sentence
     markov.build_states_from_sentence(corpus)
     random_walk = markov.construct_sample_sentence()
     output = random_walk[0].upper() + random_walk[1:]
@@ -117,12 +143,14 @@ def create_model():
 
 # ================================== MAIN RUN ====================================
 def main():
+    # Benchmark class instance for time complexity
     t0 = t()
     create_model()
     t1 = t()
     delta = t1 - t0
 
     print("\n\nTotal runtime is {0:.3g} seconds.\n".format(delta))
+    return
 
 
 # =========================== PYTHON RUN BOILERPLATE =============================

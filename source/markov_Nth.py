@@ -52,9 +52,8 @@ class MarkovNthOrder(object):
         return new
 
     # ================= METHOD TO CREATE DICTOGRAM FROM SENTENCE =================
-    def build_states_from_sentence(self, input_sentence):
+    def build_states_from_sentence(self, tokens):
         prev = self.initialize_window()
-        tokens = input_sentence.split(" ")
 
         for token in tokens:
             if not prev in self.states:
@@ -65,34 +64,36 @@ class MarkovNthOrder(object):
 
             prev = curr
 
-        print("\nINPUT SENTENCE: {}\n".format(input_sentence))
-        print("ORDER: {}\n".format(self.order))
-        print("TOTAL TOKENS:")
-        pprint(tokens)
-        print("\nTOTAL STATES:")
-        pprint(self.states)
+        input_sentence = " ".join(tokens)
+
+        print("\nINPUT SENTENCE: {}...\n".format(input_sentence[:250]))
+        print("WORD COUNT OF CORPUS: >400,000\n")
+        # print("ORDER: {}\n".format(self.order))
+        # print("TOTAL TOKENS:")
+        # pprint(tokens)
+        # print("\nTOTAL STATES:")
+        # pprint(self.states)
 
     # ============ METHOD TO SAMPLE DICTOGRAM AND CREATE NEW SENTENCE ============
     def construct_sample_sentence(self):
         temp = self.initialize_window()
-        pos = self.states[temp][ri(0, len(self.states[temp]) - 1)]
-        sent, breaker, first = "", " ", True
+        current_position = self.states[temp][ri(0, len(self.states[temp]) - 1)]
+        start, breaker, first = "", " ", True
 
         # print("temp: {}".format(temp))
-        # print("sent: {}".format(sent))
+        # print("start: {}".format(start))
         # print("breaker: {}".format(breaker))
-        # print("position: {}".format(pos))
         # print("histogram: {}".format(self.histogram))
 
-        while (pos in self.states) and (pos != temp) and (pos != None):
+        while (current_position in self.states) and (current_position != temp) and (current_position != None):
             if not first:
-                sent += breaker
+                start += breaker
 
-            sent += pos[len(pos) - 1]
-            pos = self.states[pos][ri(0, len(self.states[pos]) - 1)]
+            start += current_position[len(current_position) - 1]
+            current_position = self.states[current_position][ri(0, len(self.states[current_position]) - 1)]
             first = False
         
-        return sent + breaker + pos[len(pos) - 1]
+        return start + breaker + current_position[len(current_position) - 1]
 
 
 # ================================================================================
@@ -102,16 +103,16 @@ class MarkovNthOrder(object):
 
 # ================== FUNCTION TO CREATE AND RUN CLASS INSTANCE ===================
 def create_model():
-    test_sentence = "will you participate in the conference with new fellows on saturday evening after registration will you participate in the workshops on monday morning interested in sharing a room"
-    # f = open("count_monte_cristo.txt", "r")
-    # corpus
+    # corpus = "will you participate in the conference with new fellows on saturday evening after registration will you participate in the workshops on monday morning interested in sharing a room"
+    with open("tcomc_unabridged.txt") as f:
+        corpus = f.read().split()
     markov = MarkovNthOrder(3)
 
-    markov.build_states_from_sentence(test_sentence)
+    markov.build_states_from_sentence(corpus)
     random_walk = markov.construct_sample_sentence()
     output = random_walk[0].upper() + random_walk[1:]
 
-    print("\n\nOUTPUT SENTENCE: {}.".format(output))
+    print("OUTPUT SENTENCE: {}.".format(output[:250]))
     return
 
 # ================================== MAIN RUN ====================================
@@ -119,9 +120,9 @@ def main():
     t0 = t()
     create_model()
     t1 = t()
-    delta = 1000 * (t1 - t0)
+    delta = t1 - t0
 
-    print("\n\nTotal runtime is {0:.3g} milliseconds.\n".format(delta))
+    print("\n\nTotal runtime is {0:.3g} seconds.\n".format(delta))
 
 
 # =========================== PYTHON RUN BOILERPLATE =============================

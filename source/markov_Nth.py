@@ -112,7 +112,7 @@ def create_model():
     random_walk = markov.construct_sample_sentence()
     output = random_walk[0].upper() + random_walk[1:]
 
-    print("OUTPUT SENTENCE: {}.".format(output[:250]))
+    print("OUTPUT SENTENCE: {}...".format(output[:250]))
     return
 
 # ================================== MAIN RUN ====================================

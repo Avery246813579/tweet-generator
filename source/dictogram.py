@@ -15,7 +15,7 @@ class Dictogram(dict):
         self.tokens = 0  # Total count of all word tokens in this histogram
         self.word_freq = dict()
         # Count words in given list, if any
-        if word_list is not None:
+        if word_list:
             for word in word_list:
                 self.add_count(word)
 

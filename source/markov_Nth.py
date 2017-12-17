@@ -6,7 +6,7 @@ DESCRIPTION:    This is a functioning class instance of an adjustable Nth-order
                 histogram-sampled sentence.
 
 TODO:           -> Identify performance analyses (memory) on major class methods.
-                -> 
+                -> Add [START] and [STOP] tokens throughout corpus. 
 
 SOURCE:         CS2-Tweet-Generator course repository at Make School Product College
 
@@ -52,10 +52,11 @@ class Markov_Nth_Order(object):
         n = self.order
         window = []
 
-        # Create window tuple of size n (inputted order)
+        # Create window tuple of size N (inputted order)
         for _ in range(n):
             window.append("")
 
+        # Returns tuple of size N based on Markov order
         return tuple(window)
 
     # ==================== HELPER METHOD TO BUILD EACH WINDOW ====================
@@ -88,7 +89,7 @@ class Markov_Nth_Order(object):
             prev = curr
 
         input_sentence = " ".join(tokens)
-        print("\nINPUT SENTENCE: {}...\n".format(input_sentence[:250]))
+        print("\nINPUT SENTENCE: {}...\n".format(input_sentence[:1000]))
         print("WORD COUNT OF CORPUS: >400,000\n")
 
         # print("ORDER: {}\n".format(self.order))
@@ -150,15 +151,26 @@ def create_model():
     # Create corpus from TCoMC book (over 400,000 words)
     with open("tcomc_unabridged.txt") as f:
         corpus = f.read().split()
-    markov = Markov_Nth_Order()
+    
+    # print(sys.argv[1])
+    if len(sys.argv) > 1:
+        if sys.argv[1].isnumeric():
+            print("NUMERIC INPUT RECEIVED SUCCESSFULLY. ASSIGNING...\n\nORDER OF MARKOV:\nn = {}".format(int(sys.argv[1])))
+            markov = Markov_Nth_Order(int(sys.argv[1]))
+        else:
+            print("BAD INPUT RECEIVED. REVERTING TO DEFAULT CASE:\n\nORDER OF MARKOV:\nn = 1")
+            markov = Markov_Nth_Order()
+    else:
+        print("NO INPUT RECEIVED. REVERTING TO DEFAULT CASE:\n\nORDER OF MARKOV:\nn = 1")
+        markov = Markov_Nth_Order()
 
     # Create random walk, then reformat and clean to produce final outputted sentence
     markov.build_states_from_sentence(corpus)
     random_walk = markov.construct_sample_sentence()
     output = random_walk[0].upper() + random_walk[1:]
 
-    print("ORDER OF MARKOV:\nn = {}\n".format(markov.order))
-    print("OUTPUT SENTENCE: {}...".format(output[:250]))
+    # print("ORDER OF MARKOV:\nn = {}\n".format(markov.order))
+    print("OUTPUT SENTENCE: {}...".format(output[:140]))
     return
 
 # ================================== MAIN RUN ====================================

@@ -1,10 +1,16 @@
 """
-TITLE: markov_Nth.py
+TITLE:          markov_Nth.py
+
 DESCRIPTION:    This is a functioning class instance of an adjustable Nth-order
                 Markov Chain that accepts a large corpus of words and outputs a 
-                histogram-sampled sentence. 
-SOURCE: CS2-Tweet-Generator course repository at Make School Product College
-AUTHOR: Aakash Sudhakar
+                histogram-sampled sentence.
+
+TODO:           -> Identify performance analyses (memory) on major class methods.
+                -> 
+
+SOURCE:         CS2-Tweet-Generator course repository at Make School Product College
+
+AUTHOR:         Aakash Sudhakar
 """
 
 
@@ -24,7 +30,7 @@ import sys                                              # System operations libr
 # ================================================================================
 
 
-class MarkovNthOrder(object):
+class Markov_Nth_Order(object):
 
     # =========================== CLASS INITIALIZER(S) ===========================
     def __init__(self, order=1):
@@ -94,31 +100,44 @@ class MarkovNthOrder(object):
 
     # ============ METHOD TO SAMPLE DICTOGRAM AND CREATE NEW SENTENCE ============
     """
-    NOTE: (TIME) Best/Worst Case -> O(1) -> Random samples select few words towards start of markov chain
+    NOTE: (TIME) Best Case -> O(1) -> Random samples select few words towards start of markov chain
     NOTE: (TIME) Worst Case -> O(n^2) -> Random samples select many words scattered throughout markov chain
     NOTE: (MEMORY) Best Case -> O(?) -> ???
     NOTE: (MEMORY) Worst Case -> O(?) -> ???
     """
     def construct_sample_sentence(self):
         temp = self.initialize_window()
-        current_position = self.states[temp][ri(0, len(self.states[temp]) - 1)]
-        start, breaker, first = "", " ", True
+        current_position = self.select_current_position(temp)
+        start, word_break, first = "", " ", True
 
         # print("temp: {}".format(temp))
         # print("start: {}".format(start))
-        # print("breaker: {}".format(breaker))
+        # print("word_break: {}".format(word_break))
         # print("histogram: {}".format(self.histogram))
 
         # Use randomizing library to chain together sentence based on sampling frequencies
         while (current_position in self.states) and (current_position != temp) and (current_position != None):
             if not first:
-                start += breaker
+                start += word_break
 
             start += current_position[len(current_position) - 1]
-            current_position = self.states[current_position][ri(0, len(self.states[current_position]) - 1)]
+            current_position = self.select_current_position(current_position)
             first = False
         
-        return start + breaker + current_position[len(current_position) - 1]
+        constructed_walk = start + word_break + current_position[len(current_position) - 1]
+        
+        return constructed_walk
+
+    # ======== METHOD TO RANDOMLY SELECT CURRENT WORD POSITION IN CORPUS =========
+    """
+    NOTE: (TIME) Best Case -> O(?) -> ???
+    NOTE: (TIME) Worst Case -> O(?) -> ???
+    NOTE: (MEMORY) Best Case -> O(?) -> ???
+    NOTE: (MEMORY) Worst Case -> O(?) -> ???
+    """
+    def select_current_position(self, pos):
+        current_position = self.states[pos][ri(0, len(self.states[pos]) - 1)]
+        return current_position
 
 
 # ================================================================================
@@ -131,13 +150,14 @@ def create_model():
     # Create corpus from TCoMC book (over 400,000 words)
     with open("tcomc_unabridged.txt") as f:
         corpus = f.read().split()
-    markov = MarkovNthOrder(3)
+    markov = Markov_Nth_Order()
 
     # Create random walk, then reformat and clean to produce final outputted sentence
     markov.build_states_from_sentence(corpus)
     random_walk = markov.construct_sample_sentence()
     output = random_walk[0].upper() + random_walk[1:]
 
+    print("ORDER OF MARKOV:\nn = {}\n".format(markov.order))
     print("OUTPUT SENTENCE: {}...".format(output[:250]))
     return
 

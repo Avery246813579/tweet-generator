@@ -89,7 +89,7 @@ class Markov_Nth_Order(object):
             prev = curr
 
         input_sentence = " ".join(tokens)
-        print("\nINPUT SENTENCE: {}...\n".format(input_sentence[:1000]))
+        print("\nINPUT SENTENCE: {}...\n".format(input_sentence[:400]))
         print("WORD COUNT OF CORPUS: >400,000\n")
 
         # print("ORDER: {}\n".format(self.order))
@@ -107,25 +107,26 @@ class Markov_Nth_Order(object):
     NOTE: (MEMORY) Worst Case -> O(?) -> ???
     """
     def construct_sample_sentence(self):
-        temp = self.initialize_window()
-        current_position = self.select_current_position(temp)
-        start, word_break, first = "", " ", True
+        window = self.initialize_window()
+        current_position = self.select_current_position(window)
+        start, delimiter, is_first = "", " ", True
 
-        # print("temp: {}".format(temp))
-        # print("start: {}".format(start))
-        # print("word_break: {}".format(word_break))
-        # print("histogram: {}".format(self.histogram))
+        print("WINDOW: {}\n".format(window))
+        # print("START: {}\n".format(start))
+        # print("WORD DELIMITER: {}\n".format(delimiter))
+        # print("FIRST POSITION BOOLEAN: {}\n".format(is_first))
+        # print("HISTOGRAM: {}\n".format(self.histogram))       # Not functional without self.histogram assigned
 
         # Use randomizing library to chain together sentence based on sampling frequencies
-        while (current_position in self.states) and (current_position != temp) and (current_position != None):
-            if not first:
-                start += word_break
+        while (current_position in self.states) and (current_position != window) and (current_position != None):
+            if not is_first:
+                start += delimiter
 
             start += current_position[len(current_position) - 1]
             current_position = self.select_current_position(current_position)
-            first = False
+            is_first = False
         
-        constructed_walk = start + word_break + current_position[len(current_position) - 1]
+        constructed_walk = start + delimiter + current_position[len(current_position) - 1]
         
         return constructed_walk
 

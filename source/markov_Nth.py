@@ -185,7 +185,5 @@ def main():
     print("\n\nTotal runtime is {0:.3g} seconds.\n".format(delta))
     return
 
-
-# =========================== PYTHON RUN BOILERPLATE =============================
 if __name__ == "__main__":
     main()
